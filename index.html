@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>67 Karakter</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #0d0d0f; color: #f2f2f2; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .ust { position: fixed; top: 0; left: 0; right: 0; padding: 18px 24px; display: flex; align-items: baseline; gap: 12px; z-index: 10; pointer-events: none; }
+  .ust h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.3px; }
+  .ust span { font-size: 12px; color: #8a8a8e; }
+  model-viewer { width: 100%; height: 100%; background: #0d0d0f; --poster-color: #0d0d0f; }
+  .alt { position: fixed; bottom: 0; left: 0; right: 0; padding: 14px 24px; text-align: center; font-size: 11px; color: #6e6e73; z-index: 10; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="ust"><h1>67 Karakter</h1><span>final model</span></div>
+<model-viewer
+  src="model.glb"
+  camera-controls
+  auto-rotate
+  auto-rotate-delay="1500"
+  rotation-per-second="24deg"
+  shadow-intensity="0.6"
+  exposure="1.05"
+  camera-orbit="0deg 82deg 105%"
+  min-camera-orbit="auto 30deg 60%"
+  max-camera-orbit="auto 120deg 250%"
+  interaction-prompt="none">
+</model-viewer>
+<div class="alt">surukleyerek dondur, tekerlekle yaklas</div>
+</body>
+</html>
