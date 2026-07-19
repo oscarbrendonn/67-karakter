@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>67 — side by side</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+html,body{margin:0;height:100%;background:#d9d9dc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}
+model-viewer{width:100vw;height:100vh;--poster-color:#d9d9dc}
+.badge{position:fixed;top:14px;left:16px;color:#1a1a1a;font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.sub{position:fixed;top:35px;left:16px;color:#6b6b70;font-size:13px}
+.legend{position:fixed;top:14px;right:16px;color:#444;font-size:12px;text-align:right;line-height:1.6;
+        background:rgba(255,255,255,0.78);padding:8px 12px;border-radius:8px}
+.tabs{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:5px;
+      background:rgba(255,255,255,0.84);backdrop-filter:blur(12px);padding:5px;border-radius:11px;
+      box-shadow:0 2px 14px rgba(0,0,0,0.12)}
+.tabs button{border:0;background:transparent;padding:9px 16px;border-radius:8px;font-size:13px;color:#333;
+             cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .15s}
+.tabs button:hover{background:rgba(0,0,0,0.05)}
+.tabs button.on{background:#1a1a1a;color:#fff}
+.hint{position:fixed;bottom:74px;left:0;right:0;text-align:center;color:#888;font-size:12px;pointer-events:none}
+</style></head><body>
+<div class="badge">67 — side by side</div>
+<div class="sub">old (no cape) vs new (cape + original 3D logos)</div>
+<div class="legend"><b>left</b> — 67-karakter, new hands<br><b>right</b> — caped, 3D logo front &amp; back</div>
+<model-viewer id="mv" src="kiyas.glb" alt="67 characters side by side" camera-controls touch-action="pan-y"
+ interaction-prompt="none" shadow-intensity="0.9" exposure="1.05"
+ min-field-of-view="3deg" max-field-of-view="35deg" field-of-view="11deg"
+ bounds="tight" camera-orbit="0deg 82deg auto"></model-viewer>
+<div class="hint">drag to rotate · scroll to zoom</div>
+<div class="tabs">
+  <button class="on" data-o="0deg 82deg auto" data-f="11deg">front</button>
+  <button data-o="180deg 82deg auto" data-f="11deg">back</button>
+  <button data-o="90deg 82deg auto" data-f="11deg">side</button>
+  <button data-o="0deg 86deg auto" data-f="4deg">hands (zoom)</button>
+</div>
+<script>
+const mv=document.getElementById('mv');
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  mv.setAttribute('camera-orbit', b.dataset.o);
+  mv.setAttribute('field-of-view', b.dataset.f);
+});
+</script></body></html>
